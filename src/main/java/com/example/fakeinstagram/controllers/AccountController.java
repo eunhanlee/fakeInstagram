@@ -26,4 +26,10 @@ public class AccountController {
         return ResponseEntity.ok(addedUser); //200
     }
 
+    @PostMapping("login/")
+    public  ResponseEntity<Account> login(@RequestBody Account user) {
+        Account loginUser = accountServiceInterface.login(user);
+        return ResponseEntity.ok(loginUser); //200
+    }
+
 }

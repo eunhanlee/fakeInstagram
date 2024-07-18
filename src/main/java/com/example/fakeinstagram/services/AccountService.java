@@ -16,13 +16,20 @@ public class AccountService implements AccountServiceInterface {
 
     @Override
     public Account signup(Account user) {
+
         Account newUser = new Account();
         newUser.setUsername(user.getUsername());
         newUser.setPassword(user.getPassword());
         newUser.setFullName(user.getPassword());
-        newUser.setPhoneNumber(user.getPhoneNumber());
-        newUser.setEmail(user.getEmail());
+        if (user.getPhoneNumber() != null) newUser.setPhoneNumber(user.getPhoneNumber());
+        if (user.getEmail() != null) newUser.setEmail(user.getEmail());
+
         accountDaoInterface.save(newUser);
         return newUser;
+    }
+
+    @Override
+    public Account login(Account user) {
+        return null;
     }
 }
